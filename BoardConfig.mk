@@ -151,6 +151,7 @@ OF_MAINTAINER := Altaf Yafai
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_THEME := portrait_hdpi
+TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BACKUP_EXCLUSIONS := /data/fonts/files
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone34/temp"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
@@ -163,9 +164,24 @@ TW_EXTRA_LANGUAGES := true
 TW_FRAMERATE := 60
 TW_INCLUDE_CRYPTO := true
 TW_NO_EXFAT_FUSE := true
-#TW_NO_SCREEN_BLANK := true
+TW_NO_SCREEN_BLANK := true
 TW_INCLUDE_RESETPROP := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
+
+# OrangeFox specific
+FOX_VERSION := R12.1
+FOX_BUILD_TYPE := Unofficial
+FOX_RECOVERY_INSTALL_PARTITION := /dev/block/bootdevice/by-name/recovery
+FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/bootdevice/by-name/system
+FOX_RECOVERY_VENDOR_PARTITION := /dev/block/bootdevice/by-name/vendor
+FOX_VANILLA_BUILD := 1
+OF_USE_GREEN_LED := 0
+OF_QUICK_BACKUP_LIST := "/boot;/data;/system_image;/vendor_image;"
+OF_ALLOW_DISABLE_NAVBAR := 1
+OF_SCREEN_HELPER_BOTTOM_MARGIN := 60
+OF_STATUS_INDENT_LEFT := 48
+OF_STATUS_INDENT_RIGHT := 48
+
 TW_OVERRIDE_SYSTEM_PROPS := \
     "ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 RECOVERY_LIBRARY_SOURCE_FILES += \
