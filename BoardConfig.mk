@@ -149,10 +149,10 @@ OF_MAINTAINER := Altaf Yafai
 
 # TWRP specific build flags
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_THEME := portrait_hdpi
 TW_BACKUP_EXCLUSIONS := /data/fonts/files
-TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone39/temp"
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/virtual/thermal/thermal_zone34/temp"
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TW_DEFAULT_BRIGHTNESS := 1024
 TW_MAX_BRIGHTNESS := 2047
@@ -160,7 +160,7 @@ TW_QCOM_ATS_OFFSET := 1666528204500
 TW_EXCLUDE_APEX := true
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_EXTRA_LANGUAGES := true
-TW_FRAMERATE := 90
+TW_FRAMERATE := 60
 TW_INCLUDE_CRYPTO := true
 TW_NO_EXFAT_FUSE := true
 #TW_NO_SCREEN_BLANK := true
