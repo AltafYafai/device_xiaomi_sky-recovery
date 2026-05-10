@@ -34,6 +34,9 @@ export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
 export OF_ENABLE_FRP_ADDON=1
     # already forced reflash in /system/bin/post_rom_flash_completion.sh
 export OF_NO_REFLASH_CURRENT_ORANGEFOX=1
+    # magisk support
+export FOX_USE_SPECIFIC_MAGISK_ZIP="$script_path/prebuilt/Magisk-v30.6.zip"
+export FOX_MOVE_MAGISK_INSTALLER_TO_RAMDISK=1
     # kernalsu support
 export FOX_ENABLE_KERNELSU_SUPPORT=1
     # maintainer
