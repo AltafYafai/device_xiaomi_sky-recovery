@@ -169,7 +169,7 @@ TW_INCLUDE_RESETPROP := true
 TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 
 # OrangeFox specific
-FOX_VERSION := R12.1
+FOX_MAINTAINER_PATCH_VERSION := 1
 FOX_BUILD_TYPE := Unofficial
 FOX_RECOVERY_INSTALL_PARTITION := /dev/block/bootdevice/by-name/recovery
 FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/bootdevice/by-name/system
