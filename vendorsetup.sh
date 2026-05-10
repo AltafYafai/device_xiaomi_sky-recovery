@@ -30,6 +30,8 @@ export OF_USE_LZ4_COMPRESSION=1
     # prevent spamming the recovery console with noisy loop device mount errors 
     # (instead it will just write the errors to the log file)
 export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
+    # Set this to 1 to avoid the new 'NO KERNEL CONFIG' error, when using a prebuilt kernel
+export OF_FORCE_PREBUILT_KERNEL=1
     # Set this to 1 to include an addon for removing factory reset protection (FRP)
 export OF_ENABLE_FRP_ADDON=1
     # Set this to 1 to replace the "Swipe up" lockscreen screen with a button
