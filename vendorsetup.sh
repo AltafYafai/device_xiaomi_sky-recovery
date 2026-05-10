@@ -32,6 +32,8 @@ export OF_USE_LZ4_COMPRESSION=1
 export OF_LOOP_DEVICE_ERRORS_TO_LOG=1
     # Set this to 1 to include an addon for removing factory reset protection (FRP)
 export OF_ENABLE_FRP_ADDON=1
+    # Set this to 1 to replace the "Swipe up" lockscreen screen with a button
+export OF_USE_LOCKSCREEN_BUTTON=1
     # already forced reflash in /system/bin/post_rom_flash_completion.sh
 export OF_NO_REFLASH_CURRENT_ORANGEFOX=1
     # magisk support
