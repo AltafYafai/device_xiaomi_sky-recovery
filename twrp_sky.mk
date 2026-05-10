@@ -38,6 +38,9 @@ $(call inherit-product, vendor/$(CUSTOM_VENDOR)/config/common.mk)
 # OEM Info (automatically taken from device tree path)
 BOARD_VENDOR := $(or $(word 2,$(subst /, ,$(firstword $(MAKEFILE_LIST)))),$(value 2))
 
+# Maintainer Info
+FOX_MAINTAINER := Altaf Yafai
+
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
 PRODUCT_NAME := $(CUSTOM_VENDOR)_$(PRODUCT_DEVICE)
