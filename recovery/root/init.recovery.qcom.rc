@@ -57,3 +57,8 @@ on property:ro.twrp.fastbootd=1
     write /sys/kernel/boot_adsp/boot 1
     wait /sys/class/power_supply/battery
     start health-hal-2-1
+
+on property:twrp.modules.loaded=true #Flashlight
+    mkdir /tmp/flashlight 
+    write /tmp/flashlight/max_brightness "1"
+    symlink /sys/devices/virtual/camera/factory_test_flash/rear_flash /tmp/flashlight/brightness
