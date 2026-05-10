@@ -171,12 +171,9 @@ TW_USE_SERIALNO_PROPERTY_FOR_DEVICE_ID := true
 # OrangeFox specific
 FOX_MAINTAINER_PATCH_VERSION := 1
 FOX_BUILD_TYPE := Unofficial
-FOX_RECOVERY_INSTALL_PARTITION := /dev/block/bootdevice/by-name/recovery
-FOX_RECOVERY_SYSTEM_PARTITION := /dev/block/bootdevice/by-name/system
-FOX_RECOVERY_VENDOR_PARTITION := /dev/block/bootdevice/by-name/vendor
 FOX_VANILLA_BUILD := 1
 OF_USE_GREEN_LED := 0
-OF_QUICK_BACKUP_LIST := "/boot;/data;/system_image;/vendor_image;"
+OF_QUICK_BACKUP_LIST := /boot;/data;/system_image;/vendor_image;
 OF_ALLOW_DISABLE_NAVBAR := 1
 OF_SCREEN_HELPER_BOTTOM_MARGIN := 60
 OF_STATUS_INDENT_LEFT := 48
