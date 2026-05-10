@@ -39,6 +39,7 @@ export FOX_USE_SPECIFIC_MAGISK_ZIP="$script_path/prebuilt/Magisk-v30.6.zip"
 export FOX_MOVE_MAGISK_INSTALLER_TO_RAMDISK=1
     # kernalsu support
 export FOX_ENABLE_KERNELSU_SUPPORT=1
+export FOX_ENABLE_KERNELSU_NEXT_SUPPORT=1
     # maintainer
 export OF_MAINTAINER="kAiF"
 
