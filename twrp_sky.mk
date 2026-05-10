@@ -37,5 +37,8 @@ PRODUCT_MANUFACTURER := $(PRODUCT_BRAND)
 # Device path for OEM device tree
 DEVICE_PATH := device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)
 
+# Maintainer Info
+FOX_MAINTAINER := Altaf Yafai
+
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
