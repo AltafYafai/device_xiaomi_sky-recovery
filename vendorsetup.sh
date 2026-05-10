@@ -25,6 +25,7 @@ export FOX_USE_DATA_RECOVERY_FOR_SETTINGS=1
 export FOX_DELETE_AROMAFM=1
 
 # Misc
+export OF_USE_LZ4_COMPRESSION=1 
     # Set this to 1 to include an addon for removing factory reset protection (FRP)
 export OF_ENABLE_FRP_ADDON=1
     # already forced reflash in /system/bin/post_rom_flash_completion.sh
@@ -38,6 +39,7 @@ export OF_MAINTAINER="kAiF"
 export FOX_USE_BASH_SHELL=1
 export FOX_USE_NANO_EDITOR=1
 export FOX_USE_TAR_BINARY=1
+export FOX_USE_LZ4_BINARY=1
 export FOX_USE_SED_BINARY=1
 export FOX_USE_XZ_UTILS=1
 export FOX_USE_ZSTD_BINARY=1
