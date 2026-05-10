@@ -36,6 +36,8 @@ export OF_FORCE_PREBUILT_KERNEL=1
 export OF_ENABLE_FRP_ADDON=1
     # Set this to 1 to replace the "Swipe up" lockscreen screen with a button
 export OF_USE_LOCKSCREEN_BUTTON=1
+    # number of list options before scrollbar creation
+export OF_OPTIONS_LIST_NUM=11
     # already forced reflash in /system/bin/post_rom_flash_completion.sh
 export OF_NO_REFLASH_CURRENT_ORANGEFOX=1
     # magisk support
