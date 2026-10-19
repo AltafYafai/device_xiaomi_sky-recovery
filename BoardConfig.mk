@@ -50,16 +50,34 @@ TARGET_KERNEL_ARCH            := arm64
 TARGET_KERNEL_HEADER_ARCH     := arm64
 BOARD_KERNEL_IMAGE_NAME       := Image
 BOARD_BOOT_HEADER_VERSION     := 4
-BOARD_MKBOOTIMG_ARGS          += --header_version $(BOARD_BOOT_HEADER_VERSION)
-BOARD_MKBOOTIMG_ARGS          += --pagesize $(BOARD_KERNEL_PAGESIZE)
+BOARD_MKBOOTIMG_ARGS          := --header_version $(BOARD_BOOT_HEADER_VERSION)
+
+# Prebuilt Linux 6.6 kernel image (LineageOS 24). Injected by CI from the
+# "kernel-6.6" release asset of the builder repository.
 TARGET_PREBUILT_KERNEL        := $(DEVICE_PATH)/prebuilt/kernel
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
+
+# Prebuilt device tree (built from the LineageOS 24 devicetrees).
+# Contains the concatenated sky base + sky 4GB base DTBs.
+BOARD_PREBUILT_DTBIMAGE       := $(DEVICE_PATH)/prebuilt/dtb
+BOARD_MKBOOTIMG_ARGS          += --dtb $(BOARD_PREBUILT_DTBIMAGE)
+
+# A/B + vendor_boot recovery
+BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
+BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
+BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 
 # Ramdisk use lz4
 BOARD_RAMDISK_USE_LZ4 := true
 
-# A/B
-BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
+# Kernel modules (prebuilt, built for the 6.6 kernel in the same CI run).
+# These are installed into the vendor_boot recovery ramdisk (/lib/modules).
+BOARD_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilt/modules/*.ko)
+BOARD_RECOVERY_KERNEL_MODULES_LOAD := $(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load 2>/dev/null)
+
+# Let TWRP load the modules from the vendor_boot ramdisk (/lib/modules)
+TW_LOAD_VENDOR_MODULES := "$(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load 2>/dev/null | tr '\n' ' ')"
+TW_LOAD_VENDOR_BOOT_MODULES := true
 
 # Partition Info
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -85,11 +103,11 @@ BOARD_DTBOIMG_PARTITION_SIZE := 0x1700000
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
-# Dynamic/Logical Partitions
-BOARD_SUPER_PARTITION_SIZE := 9126805504
+# Dynamic/Logical Partitions (matching the LineageOS 24 sky tree)
+BOARD_SUPER_PARTITION_SIZE := 6979321856
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 9122611200 # BOARD_SUPER_PARTITION_SIZE - 4MB
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := vendor vendor_dlkm odm
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6975127552 # BOARD_SUPER_PARTITION_SIZE - 4MB
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext system_dlkm vendor vendor_dlkm
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 # Workaround for error copying vendor files to recovery ramdisk

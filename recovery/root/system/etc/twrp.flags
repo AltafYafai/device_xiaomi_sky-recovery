@@ -1,7 +1,9 @@
 # mount point   fstype  device                                          device2             flags
 # Logical partitions
-/system_ext     ext4    system_ext                                                          flags=display=System_EXT
-/vendor_dlkm    ext4    vendor_dlkm                                                         flags=display=Vendor_DLKM
+/system_ext     erofs   system_ext                                                          flags=display=System_EXT
+/vendor_dlkm    erofs   vendor_dlkm                                                         flags=display=Vendor_DLKM
+/system_dlkm    erofs   system_dlkm                                                         flags=display=System_DLKM
+/mi_ext         erofs   mi_ext                                                              flags=display=Mi_ext
 
 # Userdata/Metadata partitions
 /metadata       ext4    /dev/block/by-name/metadata                                         flags=display=Metadata
