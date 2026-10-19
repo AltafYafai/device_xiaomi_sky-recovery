@@ -119,7 +119,7 @@ BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 BOARD_SUPER_PARTITION_SIZE := 6979321856
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 6975127552 # BOARD_SUPER_PARTITION_SIZE - 4MB
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext system_dlkm vendor vendor_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x06400000
 
 # Workaround for error copying vendor files to recovery ramdisk
