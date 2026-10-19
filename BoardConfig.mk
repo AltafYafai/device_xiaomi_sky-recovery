@@ -71,11 +71,23 @@ BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 BOARD_RAMDISK_USE_LZ4 := true
 
 # Kernel modules (prebuilt, built for the 6.6 kernel in the same CI run).
-# These are installed into the vendor_boot recovery ramdisk (/lib/modules).
-BOARD_RECOVERY_KERNEL_MODULES := $(wildcard $(DEVICE_PATH)/prebuilt/modules/*.ko)
-BOARD_RECOVERY_KERNEL_MODULES_LOAD := $(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load 2>/dev/null)
+#
+# Only the boot-critical modules are installed into the *vendor* (platform)
+# ramdisk, mirroring the ROM's own modules.load.vendorboot list. This keeps the
+# generated vendor_boot.img a drop-in replacement for the ROM's image: normal
+# boot still finds the storage stack, and recovery can bring up UFS before
+# /vendor_dlkm can be mounted.
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES := $(addprefix $(DEVICE_PATH)/prebuilt/modules/, $(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load.vendorboot 2>/dev/null))
+BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load.vendorboot 2>/dev/null))
 
-# Let TWRP load the modules from the vendor_boot ramdisk (/lib/modules)
+# The TWRP recovery ramdisk deliberately ships *no* kernel modules: it is merged
+# with the vendor ramdisk modules above (or with the ROM's own vendor ramdisk
+# when only the recovery fragment is flashed into an existing vendor_boot
+# image). A second copy built against a different kernel commit would shadow the
+# ROM's modules and break module loading.
+#
+# TWRP's kernel module loader picks the remaining modules up from
+# /vendor_dlkm/lib/modules at runtime; the requested names are listed here.
 TW_LOAD_VENDOR_MODULES := "$(shell cat $(DEVICE_PATH)/prebuilt/modules/modules.load 2>/dev/null | tr '\n' ' ')"
 TW_LOAD_VENDOR_BOOT_MODULES := true
 
